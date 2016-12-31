@@ -3,6 +3,7 @@
 import urllib
 import re
 import MySQLdb
+import logging
 
 global count
 count = 0
@@ -23,6 +24,7 @@ def getSongList(html):
     pattern = re.compile('<span.*?songlist__songname_txt"><a.*?>(.*?)</a></span>')
     songs = re.findall(pattern, html)
     print "I have get the songs of this album:"
+    logging.info("I have get the songs of this album")
     print len(songs)
     for i in range(0, len(songs)):
         print songs[i]
@@ -118,6 +120,7 @@ def getPage(pageURL):
         if author is not None:
             singers += [author]
     print "Insertion starteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed"
+    logging("Insertion starteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed")
     insertSingerList(singers)
 
 
